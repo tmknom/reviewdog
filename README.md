@@ -7,7 +7,7 @@
 [![MicroBadger Layers](https://img.shields.io/microbadger/layers/tmknom/reviewdog.svg)](https://microbadger.com/images/tmknom/reviewdog)
 [![License](https://img.shields.io/github/license/tmknom/reviewdog.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Dockerfile template.
+Automated code review tool.
 
 ## Requirements
 
@@ -15,9 +15,17 @@ Dockerfile template.
 
 ## Usage
 
+### Report Local
+
+ ```sh
+docker run -i --rm -v $PWD:/work tmknom/reviewdog \
+  -f=checkstyle -diff="git --no-pager diff origin/master" -reporter=local < checkstyle.log
+```
+
+### Help
+
 ```sh
-curl -fsSL https://raw.githubusercontent.com/tmknom/reviewdog/master/install | sh -s example
-cd example
+docker run --rm tmknom/reviewdog --help
 ```
 
 ## Makefile targets
